@@ -13,13 +13,13 @@ public class MenuView {
     private final DeleteAppView deleteAppView;
     private final InstallNewAppView installNewAppView;
     private final UpdateAppView updateAppView;
+    private final Scanner scanner;
 
     public void display() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Aplikacje na komputerze");
         while (true) {
             System.out.println("1. Wyswietl wszystkie, 2. Zainstaluj, 3. Aktualizuj, 4. Usun, 5. Wyjdz");
-            int option = Integer.valueOf(scanner.next());
+            int option = Integer.valueOf(scanner.nextLine());
 
             switch (option) {
                 case 1:

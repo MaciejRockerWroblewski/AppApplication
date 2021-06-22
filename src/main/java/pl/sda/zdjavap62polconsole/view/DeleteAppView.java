@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class DeleteAppView {
 
     private final ApplicationService applicationService;
+    private final Scanner scanner;
 
     public void display() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj id aplikacji do usunięcia:");
         Long id = Long.valueOf(scanner.nextLine());
 

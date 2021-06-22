@@ -11,10 +11,9 @@ import java.util.Scanner;
 public class InstallNewAppView {
 
     private final ApplicationService applicationService;
+    private final Scanner scanner;
 
     public void display() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Podaj producenta");
         String producer = scanner.nextLine();
         System.out.println("Podaj nazwę");
