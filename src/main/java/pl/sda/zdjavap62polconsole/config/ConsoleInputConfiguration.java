@@ -10,7 +10,12 @@ import java.util.Scanner;
 public class ConsoleInputConfiguration {
 
     @Bean
-    public ConsoleInputReader consoleInputReader(Scanner scanner) {
-        return new ConsoleInputReader(scanner);
+    public Scanner consoleInput() {
+        return new Scanner(System.in);
+    }
+
+    @Bean
+    public ConsoleInputReader consoleInputReader() {
+        return new ConsoleInputReader(consoleInput());
     }
 }
