@@ -9,5 +9,8 @@ import java.util.Scanner;
 @Configuration
 public class ConsoleInputConfiguration {
 
-
+    @Bean
+    public ConsoleInputReader consoleInputReader(Scanner scanner) {
+        return new ConsoleInputReader(scanner);
+    }
 }
