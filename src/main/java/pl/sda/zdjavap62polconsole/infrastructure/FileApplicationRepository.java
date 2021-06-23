@@ -1,6 +1,7 @@
 package pl.sda.zdjavap62polconsole.infrastructure;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
@@ -15,7 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Repository("fileRepository")
+@Primary
+@Repository
 //Można albo dodać nawias do stereotypu albo dać adnotacje qualifier
 //@Qualifier("fileRepository")
 public class FileApplicationRepository implements ApplicationRepository {
@@ -56,7 +58,7 @@ public class FileApplicationRepository implements ApplicationRepository {
 
     @Override
     public Optional<Application> getOne(Long id) {
-        return Optional.empty();
+        return readFromFile().stream().filter(app -> app.getId().equals(id)).findFirst();
     }
 
     private List<Application> readFromFile() {

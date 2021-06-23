@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository("memoryRepository")
+@Repository
 public class InMemoryApplicationRepository implements ApplicationRepository {
 
     //Pole do wyznaczania id, nie ma mozliwosci aby robila to teraz baza danych

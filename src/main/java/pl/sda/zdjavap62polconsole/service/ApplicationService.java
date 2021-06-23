@@ -1,9 +1,5 @@
 package pl.sda.zdjavap62polconsole.service;
 
-import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.sda.zdjavap62polconsole.infrastructure.Application;
 import pl.sda.zdjavap62polconsole.infrastructure.ApplicationRepository;
@@ -18,7 +14,7 @@ public class ApplicationService {
 
     private final ApplicationRepository repository;
 
-    public ApplicationService(@Qualifier("memoryRepository") ApplicationRepository repository) {
+    public ApplicationService(ApplicationRepository repository) {
         this.repository = repository;
     }
 
