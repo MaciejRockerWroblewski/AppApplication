@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 @Component
 @RequiredArgsConstructor
-public class UpdateAppView {
+public class UpdateAppView implements SubView {
 
     private final ApplicationService applicationService;
     private final ConsoleInputReader inputReader;
@@ -27,5 +27,9 @@ public class UpdateAppView {
             ex.printStackTrace();
             System.out.println("BLAD: " + ex.getMessage());
         }
+    }
+
+    public ViewName getName() {
+        return ViewName.UPDATE_APP;
     }
 }

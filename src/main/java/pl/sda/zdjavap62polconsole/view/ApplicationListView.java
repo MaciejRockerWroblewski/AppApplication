@@ -7,12 +7,16 @@ import pl.sda.zdjavap62polconsole.service.ApplicationService;
 
 @Component
 @RequiredArgsConstructor
-public class ApplicationListView {
+public class ApplicationListView implements SubView {
 
     private final ApplicationService service;
 
     public void display() {
         service.listAll().forEach(this::displayAppRow);
+    }
+
+    public ViewName getName() {
+        return ViewName.LIST_APPS;
     }
 
     private void displayAppRow(Application application) {

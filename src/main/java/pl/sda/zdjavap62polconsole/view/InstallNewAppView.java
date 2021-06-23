@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 @Component
 @RequiredArgsConstructor
-public class InstallNewAppView {
+public class InstallNewAppView implements SubView {
 
     private final ApplicationService applicationService;
     private final ConsoleInputReader reader;
@@ -28,5 +28,9 @@ public class InstallNewAppView {
             ex.printStackTrace();
             System.out.println("BLAD : " + ex.getMessage());
         }
+    }
+
+    public ViewName getName() {
+        return ViewName.INSTALL_NEW;
     }
 }

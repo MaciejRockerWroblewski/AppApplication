@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 @Component
 @RequiredArgsConstructor
-public class DeleteAppView {
+public class DeleteAppView implements SubView {
 
     private final ApplicationService applicationService;
     private final ConsoleInputReader reader;
@@ -24,5 +24,9 @@ public class DeleteAppView {
             ex.printStackTrace();
             System.out.println("BLAD: " + ex.getMessage());
         }
+    }
+
+    public ViewName getName() {
+        return ViewName.DELETE_APP;
     }
 }

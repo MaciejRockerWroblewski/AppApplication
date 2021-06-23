@@ -4,16 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.sda.zdjavap62polconsole.infrastructure.ConsoleInputReader;
 
+import java.util.List;
 import java.util.Scanner;
 
 @Component
 @RequiredArgsConstructor
 public class MenuView {
 
-    private final ApplicationListView listView;
-    private final DeleteAppView deleteAppView;
-    private final InstallNewAppView installNewAppView;
-    private final UpdateAppView updateAppView;
+    private final List<SubView> subViews;
     private final ConsoleInputReader inputReader;
 
     public void display() {
@@ -24,22 +22,29 @@ public class MenuView {
 
             switch (option) {
                 case 1:
-                    listView.display();
+                    getByName(ViewName.LIST_APPS).display();
                     break;
                 case 2:
-                    installNewAppView.display();
+                    getByName(ViewName.INSTALL_NEW).display();
                     break;
                 case 3:
-                    updateAppView.display();
+                    getByName(ViewName.UPDATE_APP).display();
                     break;
                 case 4:
-                    deleteAppView.display();
+                    getByName(ViewName.DELETE_APP).display();
                     break;
                 case 5:
                     return;
                 default:
-                    System.out.println("Nie znana opcja menu");
+                    System.out.println("Nieznana opcja menu");
             }
         }
+    }
+
+    private SubView getByName(ViewName name) {
+        return subViews.stream()
+                .filter(view -> view.getName().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Nie wspierany widok"));
     }
 }
