@@ -1,6 +1,7 @@
 package pl.sda.zdjavap62polconsole.infrastructure;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,11 @@ import java.util.stream.Collectors;
 //@Qualifier("fileRepository")
 public class FileApplicationRepository implements ApplicationRepository {
 
-    private static final String FILE_PATH = "C:/Users/trutyna/app.txt";
+    private final String filePath;
+
+    public FileApplicationRepository(@Value("${file.path}") String filePath) {
+        this.filePath = filePath;
+    }
 
     @Override
     public void save(Application application) {
@@ -62,7 +67,7 @@ public class FileApplicationRepository implements ApplicationRepository {
     }
 
     private List<Application> readFromFile() {
-        Path path = Paths.get(FILE_PATH);
+        Path path = Paths.get(filePath);
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             return reader.lines()
                 .map(line -> line.split(";"))
@@ -80,7 +85,7 @@ public class FileApplicationRepository implements ApplicationRepository {
     }
 
     private void storeInFile(List<Application> applications) {
-        Path path = Paths.get(FILE_PATH);
+        Path path = Paths.get(filePath);
         try (BufferedWriter writer = Files.newBufferedWriter(path,
                 StandardOpenOption.TRUNCATE_EXISTING)) {
             for (Application application: applications) {
