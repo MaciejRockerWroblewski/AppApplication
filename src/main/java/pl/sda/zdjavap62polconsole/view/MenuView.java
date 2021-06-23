@@ -2,6 +2,7 @@ package pl.sda.zdjavap62polconsole.view;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import pl.sda.zdjavap62polconsole.infrastructure.ConsoleInputReader;
 
 import java.util.Scanner;
 
@@ -13,13 +14,13 @@ public class MenuView {
     private final DeleteAppView deleteAppView;
     private final InstallNewAppView installNewAppView;
     private final UpdateAppView updateAppView;
-    private final Scanner scanner;
+    private final ConsoleInputReader inputReader;
 
     public void display() {
         System.out.println("Aplikacje na komputerze");
         while (true) {
             System.out.println("1. Wyswietl wszystkie, 2. Zainstaluj, 3. Aktualizuj, 4. Usun, 5. Wyjdz");
-            int option = Integer.valueOf(scanner.nextLine());
+            int option = inputReader.readLong().intValue();
 
             switch (option) {
                 case 1:

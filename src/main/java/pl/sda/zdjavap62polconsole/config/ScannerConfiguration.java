@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Scanner;
 
 @Configuration
-public class ConsoleConfiguration {
+public class ScannerConfiguration {
 
     @Bean
     public Scanner consoleInput() {

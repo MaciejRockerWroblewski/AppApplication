@@ -2,8 +2,10 @@ package pl.sda.zdjavap62polconsole.view;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import pl.sda.zdjavap62polconsole.infrastructure.ConsoleInputReader;
 import pl.sda.zdjavap62polconsole.service.ApplicationService;
 
+import java.io.Console;
 import java.util.Scanner;
 
 @Component
@@ -11,13 +13,13 @@ import java.util.Scanner;
 public class UpdateAppView {
 
     private final ApplicationService applicationService;
-    private final Scanner scanner;
+    private final ConsoleInputReader inputReader;
 
     public void display() {
         System.out.println("Podaj id aplikacji do aktualizacji:");
-        Long id = Long.valueOf(scanner.nextLine());
+        Long id = inputReader.readLong();
         System.out.println("Podaj nową wersję: ");
-        String newVersion = scanner.nextLine();
+        String newVersion = inputReader.readNotEmptyString();
 
         try {
             applicationService.update(id, newVersion);
