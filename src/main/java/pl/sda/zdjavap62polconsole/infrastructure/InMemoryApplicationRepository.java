@@ -1,11 +1,13 @@
 package pl.sda.zdjavap62polconsole.infrastructure;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Profile("!file")
 @Repository
 public class InMemoryApplicationRepository implements ApplicationRepository {
 

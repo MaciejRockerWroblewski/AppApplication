@@ -3,6 +3,7 @@ package pl.sda.zdjavap62polconsole.infrastructure;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
@@ -17,7 +18,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Primary
+//@Primary
+
+@Profile("file")
 @Repository
 //Można albo dodać nawias do stereotypu albo dać adnotacje qualifier
 //@Qualifier("fileRepository")
@@ -70,6 +73,7 @@ public class FileApplicationRepository implements ApplicationRepository {
         Path path = Paths.get(filePath);
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             return reader.lines()
+                .filter(line -> !line.isEmpty())
                 .map(line -> line.split(";"))
                 .map(fields -> Application.builder()
                         .id(Long.valueOf(fields[0]))

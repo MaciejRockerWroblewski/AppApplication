@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import pl.sda.zdjavap62polconsole.infrastructure.ConsoleInputReader;
 
 import java.util.List;
-import java.util.Scanner;
 
 @Component
 @RequiredArgsConstructor
