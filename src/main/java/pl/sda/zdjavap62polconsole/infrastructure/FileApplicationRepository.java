@@ -28,6 +28,7 @@ public class FileApplicationRepository implements ApplicationRepository {
 
     private final String filePath;
 
+
     public FileApplicationRepository(@Value("${file.path}") String filePath) {
         this.filePath = filePath;
     }
